@@ -45,7 +45,7 @@ ctld.maximumDistanceLogistic = 200 -- max distance from vehicle to logistics to 
 ctld.maximumSearchDistance = 1000 -- max distance for troops to search for enemy
 ctld.maximumMoveDistance = 500 -- max distance for troops to move from drop point if no enemy is nearby
 
-ctld.minimumDeployDistance = 600 -- minimum distance from a friendly pickup zone where you can deploy a crate
+ctld.minimumDeployDistance = 800 -- minimum distance from a friendly pickup zone where you can deploy a crate
 
 ctld.numberOfTroops = 10 -- default number of troops to load on a transport heli or C-130 
 							-- also works as maximum size of group that'll fit into a helicopter unless overridden
@@ -74,7 +74,7 @@ ctld.troopPickupAtFOB = true -- if true, troops can also be picked up at a creat
 
 ctld.buildTimeFOB = 60 --time in seconds for the FOB to be built
 
-ctld.crateWaitTime = 5 -- time in seconds to wait before you can spawn another crate
+ctld.crateWaitTime = 15 -- time in seconds to wait before you can spawn another crate
 
 ctld.forceCrateToBeMoved = false -- a crate must be picked up at least once and moved before it can be unpacked. Helps to reduce crate spam
 
@@ -124,9 +124,9 @@ ctld.JTAC_smokeOn_BLUE = false -- enables marking of target with smoke for BLUE 
 ctld.JTAC_smokeColour_RED = 4 -- RED side smoke colour -- Green = 0 , Red = 1, White = 2, Orange = 3, Blue = 4
 ctld.JTAC_smokeColour_BLUE = 1 -- BLUE side smoke colour -- Green = 0 , Red = 1, White = 2, Orange = 3, Blue = 4
 
-ctld.JTAC_jtacStatusF10 = true -- enables F10 JTAC Status menu
+ctld.JTAC_jtacStatusF10 = false -- enables F10 JTAC Status menu
 
-ctld.JTAC_location = true -- shows location of target in JTAC message
+ctld.JTAC_location = false -- shows location of target in JTAC message
 ctld.location_DMS = false -- shows coordinates as Degrees Minutes Seconds instead of Degrees Decimal minutes
 																									
 
@@ -725,19 +725,17 @@ ctld.extractableGroups = {
 -- When a logistic unit is destroyed, you will no longer be able to spawn crates
 
 ctld.logisticUnits = {
-    "Aleppo CC",
+  "Aleppo CC",
 	"Minakh CC",
-    "Abu al-Duhur CC",
-    "Kuweires CC",
-    "Jirah CC",
---    "Tabqa CC",
-    "Taftanaz CC",
-    "Hatay CC",
-    "Bassel Al-Assad CC",
-    "Hama CC",
+  "Abu al-Duhur CC",
+  "Kuweires CC",
+  "Jirah CC",
+  "Taftanaz CC",
+  "Hatay CC",
+  "Bassel Al-Assad CC",
+  "Hama CC",
 	"Rene Mouawad CC",
-    "Al Qusayr CC",
---	"Palmyra CC",
+  "Al Qusayr CC",
 	"An Nasiriyah CC",
 	"Al-Dumayr CC",
 	"Marj as Sultan North CC",
@@ -752,12 +750,9 @@ ctld.logisticUnits = {
 	"Rayak CC",
 	"Beirut-Rafic Hariri CC",
 	"Kiryat Shmona CC",
---	"Haifa CC",
 	"Ramat David CC",
 	"Megiddo CC",
---	"Eyn Shemer CC",
 	"Incirlik CC",
---	"Adana Sakirpasa CC",
 }
 
 -- ************** UNITS ABLE TO TRANSPORT VEHICLES ******************
@@ -842,25 +837,27 @@ ctld.spawnableCrates = {
 	["Heavy & Light Armor"] = {
         --Red
 		--Moved the T-55 to Internal Cargo as a JTAC for the time being
-		--{ weight = 820, desc = "T-55", unit = "T-55", side = 1, cratesRequired = 1, unitQuantity = 2, internal = 0 },
-        { weight = 821, desc = "T-72", unit = "T-72B", side = 1, cratesRequired = 1, unitQuantity = 1, internal = 0 },
-        { weight = 822, desc = "T-80UD", unit = "T-80UD", side = 1, cratesRequired = 2, unitQuantity = 1, internal = 0 },
-        { weight = 823, desc = "T-90", unit = "T-90", side = 1, cratesRequired = 2, unitQuantity = 1, internal = 0 },
-        { weight = 825, desc = "ZTZ-96B", unit = "ZTZ96B", side = 1, cratesRequired = 2, unitQuantity = 1, internal = 0 },
- 		{ weight = 824, desc = "LeClerc", unit = "Leclerc", side = 1, cratesRequired = 3, unitQuantity = 1, internal = 0 },
-        { weight = 802, desc = "IFV BMP-2", unit = "BMP-2", side = 1, cratesRequired = 1, unitQuantity = 2, internal = 0 },
+--    		{ weight = 820, desc = "T-55", unit = "T-55", side = 1, cratesRequired = 1, unitQuantity = 2, internal = 0 },
+		    { weight = 802, desc = "IFV BMP-2", unit = "BMP-2", side = 1, cratesRequired = 1, unitQuantity = 2, internal = 0 },
         { weight = 803, desc = "IFV BMP-3", unit = "BMP-3", side = 1, cratesRequired = 2, unitQuantity = 1, internal = 0 },
-        { weight = 804, desc = "IFV ZBD04A", unit = "ZBD04A", side = 1, cratesRequired = 2, unitQuantity = 1, internal = 0 },		
+        { weight = 804, desc = "IFV ZBD04A", unit = "ZBD04A", side = 1, cratesRequired = 2, unitQuantity = 1, internal = 0 },
+        { weight = 821, desc = "T-72", unit = "T-72B", side = 1, cratesRequired = 2, unitQuantity = 1, internal = 0 },
+        { weight = 822, desc = "T-80UD", unit = "T-80UD", side = 1, cratesRequired = 3, unitQuantity = 1, internal = 0 },
+        { weight = 823, desc = "T-90", unit = "T-90", side = 1, cratesRequired = 3, unitQuantity = 1, internal = 0 },
+        { weight = 825, desc = "ZTZ-96B", unit = "ZTZ96B", side = 1, cratesRequired = 3, unitQuantity = 1, internal = 0 },
+		    { weight = 824, desc = "LeClerc", unit = "Leclerc", side = 1, cratesRequired = 4, unitQuantity = 1, internal = 0 },
+        		
 		--Blue
 		--Moved Leo1 to internal cargo as a JTAC for the time being
         --{ weight = 830, desc = "Leopard 1A3", unit = "Leopard1A3", side = 2, cratesRequired = 1, unitQuantity = 2, internal = 0 },
-        { weight = 834, desc = "Merkava", unit = "Merkava_Mk4", side = 2, cratesRequired = 1, unitQuantity = 1, internal = 0 },
-        { weight = 831, desc = "Leopard-2", unit = "Leopard-2", side = 2, cratesRequired = 2, unitQuantity = 1, internal = 0 },
-        { weight = 832, desc = "Challenger II", unit = "Challenger2", side = 2, cratesRequired = 2, unitQuantity = 1, internal = 0 },
-        { weight = 833, desc = "M1A2 Abrams", unit = "M-1 Abrams", side = 2, cratesRequired = 3, unitQuantity = 1, internal = 0 },
-        { weight = 812, desc = "Stryker ATGM", unit = "M1134 Stryker ATGM", side = 2, cratesRequired = 1, unitQuantity = 1, internal = 0 },
+		{ weight = 812, desc = "Stryker ATGM", unit = "M1134 Stryker ATGM", side = 2, cratesRequired = 1, unitQuantity = 1, internal = 0 },
         { weight = 813, desc = "Stryker MGS", unit = "M1128 Stryker MGS", side = 2, cratesRequired = 1, unitQuantity = 2, internal = 0 },
-        { weight = 814, desc = "IFV BRADLEY", unit = "M-2 Bradley", side = 2, cratesRequired = 2, internal = 0 },		
+        { weight = 814, desc = "IFV BRADLEY", unit = "M-2 Bradley", side = 2, cratesRequired = 2, internal = 0 },
+        { weight = 834, desc = "Merkava", unit = "Merkava_Mk4", side = 2, cratesRequired = 2, unitQuantity = 1, internal = 0 },
+        { weight = 831, desc = "Leopard-2", unit = "Leopard-2", side = 2, cratesRequired = 3, unitQuantity = 1, internal = 0 },
+        { weight = 832, desc = "Challenger II", unit = "Challenger2", side = 2, cratesRequired = 3, unitQuantity = 1, internal = 0 },
+        { weight = 833, desc = "M1A2 Abrams", unit = "M-1 Abrams", side = 2, cratesRequired = 4, unitQuantity = 1, internal = 0 },
+		
     },
     ["Artillery"] = {
 		--Red
@@ -892,7 +889,7 @@ ctld.spawnableCrates = {
         { weight = 864, desc = "Buk CC Radar", unit = "SA-11 Buk CC 9S470M1", side = 1, internal = 0 },
 	-- HQ-7 (can also be configured as a system, but not currently doing so; just using the launcher)
     -- HQ-7 launcher has different names per side for immersion sake
-		{ weight = 867, desc = "HQ-7", unit = "HQ-7_LN_SP", side = 1, cratesRequired = 2, unitQuantity = 2, internal = 0 },
+		    { weight = 867, desc = "HQ-7", unit = "HQ-7_LN_SP", side = 1, cratesRequired = 2, unitQuantity = 2, internal = 0 },
 		--Blue
         { weight = 851, desc = "Gepard", unit = "Gepard", side = 2, cratesRequired = 1, unitQuantity = 2, internal = 0 },
         --{ weight = 852, desc = "M48 Chaparral", unit = "M48 Chaparral", side = 2, cratesRequired = 1, unitQuantity = 2, internal = 0 },
@@ -901,7 +898,7 @@ ctld.spawnableCrates = {
         { weight = 878, desc = "Roland Launcher", unit = "Roland ADS", side = 2, internal = 0 },
         { weight = 879, desc = "Roland Radar", unit = "Roland Radar", side = 2, internal = 0 },
         -- HQ-7 launcher has different names per side for immersion sake
-		{ weight = 880, desc = "Crotale", unit = "HQ-7_LN_SP", side = 2, cratesRequired = 2, unitQuantity = 3, internal = 0 },
+    		{ weight = 880, desc = "Crotale", unit = "HQ-7_LN_SP", side = 2, cratesRequired = 2, unitQuantity = 3, internal = 0 },
         { weight = 874, desc = "Hawk Launcher", unit = "Hawk ln", side = 2, internal = 0 },
         { weight = 875, desc = "Hawk Search Radar", unit = "Hawk sr", side = 2, internal = 0 },
         { weight = 876, desc = "Hawk Track Radar", unit = "Hawk tr", side = 2, internal = 0 },
@@ -913,16 +910,16 @@ ctld.spawnableCrates = {
         { weight = 870, desc = "SA-2 Track Radar", unit = "SNR_75V", side = 1, internal = 0 },
         { weight = 900, desc = "PATRIOT Search/Track Radar", unit = "Patriot str", side = 2, internal = 0},
         { weight = 901, desc = "PATRIOT ECS (internal)", unit = "Patriot ECS", side = 2, internal = 1 },
-		{ weight = 902, desc = "PATRIOT EPP", unit = "Patriot EPP", side = 2, internal = 0 },
+		    { weight = 902, desc = "PATRIOT EPP", unit = "Patriot EPP", side = 2, internal = 0 },
         { weight = 903, desc = "PATRIOT CP (internal)", unit = "Patriot cp", side = 2, internal = 1 },
-		{ weight = 904, desc = "PATRIOT AMG", unit = "Patriot AMG", side = 2, internal = 0},
+		    { weight = 904, desc = "PATRIOT AMG", unit = "Patriot AMG", side = 2, internal = 0},
         { weight = 905, desc = "PATRIOT Launcher", unit = "Patriot ln", side = 2, internal = 0 },
-		{ weight = 906, desc = "PATRIOT Repair", unit = "PATRIOT Repair", side = 2, internal = 1 },
+--		    { weight = 906, desc = "PATRIOT Repair", unit = "PATRIOT Repair", side = 2, internal = 1 },
         { weight = 907, desc = "SA-10 Search Radar", unit = "S-300PS 64H6E sr", side = 1, internal = 0 },
         { weight = 908, desc = "SA-10 Track Radar", unit = "S-300PS 40B6M tr", side = 1, internal = 0 },
-		{ weight = 909, desc = "SA-10 Alt Radar", unit = "S-300PS 40B6MD sr", side = 1, internal = 0 },
-        { weight = 910, desc = "SA-10 CP", unit = "S-300PS 54K6 cp", side = 1, internal = 1 },
-		{ weight = 911, desc = "SA-10 Launcher", unit = "S-300PS 5P85C ln", side = 1, internal = 0},   
+		    { weight = 909, desc = "SA-10 Alt Radar", unit = "S-300PS 40B6MD sr", side = 1, internal = 0 },
+        { weight = 910, desc = "SA-10 CP (internal)", unit = "S-300PS 54K6 cp", side = 1, internal = 1 },
+		    { weight = 911, desc = "SA-10 Launcher", unit = "S-300PS 5P85C ln", side = 1, internal = 0},   
 		--[[
         -- SA-3 system
         { weight = 871, desc = "SA-3 Launcher", unit = "5p73 s-125 ln", side = 1, internal = 0 },
@@ -935,30 +932,31 @@ ctld.spawnableCrates = {
         { weight = 601, desc = "KAMAZ-43101 Ammo Truck", unit = "KAMAZ Truck", side = 1, cratesRequired = 1, internal = 0 },
         { weight = 610, desc = "M978 HEMTT Tanker", unit = "M978 HEMTT Tanker", side = 2, cratesRequired = 1, internal = 0 },
         { weight = 611, desc = "M-818 Ammo Truck", unit = "M 818", side = 2, cratesRequired = 1, internal = 0 },
-        { weight = 620, desc = "SA-2 Repair", unit = "SA-2 Repair", side = 1, internal = 0 },
-		{ weight = 621, desc = "SA-10 Repair", unit = "SA-10 Repair", side = 1, internal = 1 },
-        { weight = 622, desc = "Kub Repair", unit = "Kub Repair", side = 1, internal = 0 },
-        { weight = 623, desc = "Buk Repair", unit = "Buk Repair", side = 1, internal = 0 },
-        { weight = 624, desc = "Hawk Repair", unit = "Hawk Repair", side = 2, internal = 0 },
-        { weight = 625, desc = "Roland Repair", unit = "Roland Repair", side = 2, internal = 0 },
-		{ weight = 626, desc = "PATRIOT Repair", unit = "PATRIOT Repair", side = 2, internal = 1 },
+--        { weight = 620, desc = "SA-2 Repair", unit = "SA-2 Repair", side = 1, internal = 0 },
+--		    { weight = 621, desc = "SA-10 Repair", unit = "SA-10 Repair", side = 1, internal = 1 },
+--        { weight = 622, desc = "Kub Repair", unit = "Kub Repair", side = 1, internal = 0 },
+--        { weight = 623, desc = "Buk Repair", unit = "Buk Repair", side = 1, internal = 0 },
+--        { weight = 624, desc = "Hawk Repair", unit = "Hawk Repair", side = 2, internal = 0 },
+--        { weight = 625, desc = "Roland Repair", unit = "Roland Repair", side = 2, internal = 0 },
+--		    { weight = 626, desc = "PATRIOT Repair", unit = "PATRIOT Repair", side = 2, internal = 1 },
         { weight = 627, desc = "Early Warning Radar", unit = "1L13 EWR", internal = 0 },
     },
     ["Internal Cargo"] = {
-        { weight = 820, desc = "T-55 (Recon)", unit = "T-55", side = 1, cratesRequired = 1, unitQuantity = 1, internal = 1 },		
-		{ weight = 830, desc = "Leopard 1A3 (Recon)", unit = "Leopard1A3", side = 2, cratesRequired = 1, unitQuantity = 1, internal = 1 },
-		--{ weight = 501, desc = "HMMWV - JTAC", unit = "Hummer", side = 2, cratesRequired = 1, internal = 1 }, 
-		-- used as jtac and unarmed, not on the crate list if JTAC is disabled
-        --{ weight = 502, desc = "Tigr - JTAC", unit = "Tigr_233036", side = 1, cratesRequired = 1, internal = 1 }, 
-		-- used as jtac and unarmed, not on the crate list if JTAC is disabled
+--        { weight = 820, desc = "T-55 (Recon)", unit = "T-55", side = 1, cratesRequired = 1, unitQuantity = 1, internal = 1 },		
+--		    { weight = 830, desc = "Leopard 1A3 (Recon)", unit = "Leopard1A3", side = 2, cratesRequired = 1, unitQuantity = 1, internal = 1 },
+		    { weight = 501, desc = "JTAC - HMMWV", unit = "Hummer", side = 2, cratesRequired = 1, internal = 1 }, 
+        { weight = 502, desc = "JTAC - Tigr", unit = "Tigr_233036", side = 1, cratesRequired = 1, internal = 1 }, 
         { weight = 922, desc = "FOB Crate - Large", unit = "FOB", internal = 1 }, -- Builds a FOB! 
     },
 }
 
 -- if the unit is on this list, it will be made into a JTAC when deployed
+--[[
 ctld.jtacUnitTypes = {
-    "Tigr_233036", "Hummer", "Soldier M4", "Infantry AK", "T-55", "Leopard1A3" -- there are some wierd encoding issues so if you write SKP-11 it wont match as the - sign is encoded differently...
+    "Tigr_233036", "Hummer" -- there are some wierd encoding issues so if you write SKP-11 it wont match as the - sign is encoded 
+--    "Tigr_233036", "Hummer", "T-55", "Leopard1A3" -- there are some wierd encoding issues so if you write SKP-11 it wont match as the - sign is encoded differently...
 }
+--]]
 
 
 ctld.nextUnitId = 1;
@@ -1742,12 +1740,12 @@ ctld.AASystemTemplate = {
         name = "BUK AA System",
         count = 3,
         parts = {
-            {name = "SA-11 Buk LN 9A310M1", desc = "BUK Launcher" , launcher = true},
-            {name = "SA-11 Buk CC 9S470M1", desc = "BUK CC Radar"},
-            {name = "SA-11 Buk SR 9S18M1", desc = "BUK Search Radar"},
+            {name = "SA-11 Buk LN 9A310M1", desc = "Buk Launcher" , launcher = true},
+            {name = "SA-11 Buk CC 9S470M1", desc = "Buk CC Radar"},
+            {name = "SA-11 Buk SR 9S18M1", desc = "Buk Search Radar"},
         },
         repair = "BUK Repair",
-		sytemType = "MR"				 
+		systemType = "MR"				 
     },
     {
         name = "KUB AA System",
@@ -2067,6 +2065,7 @@ function ctld.spawnCrate(_arguments)
                 return
             end
 
+--[[
             if ctld.isJTACUnitType(_crateType.unit) then
 
                 local _limitHit = false
@@ -2091,7 +2090,7 @@ function ctld.spawnCrate(_arguments)
                     return
                 end
             end
-
+--]]
             local _position = _heli:getPosition()
 
             -- check crate spam
@@ -3444,13 +3443,12 @@ function ctld.unpackCrates(_arguments)
                 return
             end
 ]]--
-            if (ctld.debug == false) then
-				if ctld.inLogisticsZone(_heli) == true  or  ctld.farEnoughFromLogisticZone(_heli) == false then
+--            if (ctld.debug == false) then
+			if ctld.inLogisticsZone(_heli) == true  or  ctld.farEnoughFromLogisticZone(_heli) == false then
 
-					ctld.displayMessageToGroup(_heli, "You can't unpack that here! Take it to where it's needed!", 20)
-
+--					ctld.displayMessageToGroup(_heli, "You can't unpack that here! Take it to where it's needed!", 20)
+					ctld.displayMessageToGroup(_heli, "Not far enough from Logistics Center ".._dist.." meters, need to be greater than "..ctld.minimumDeployDistance.." meters", 10)
 					return
-				end
 			end
 
 
@@ -3468,7 +3466,7 @@ function ctld.unpackCrates(_arguments)
                     ctld.displayMessageToGroup(_heli,"Sorry you must move this crate before you unpack it!", 20)
                     return
                 end
-
+                
 
                 local _aaTemplate = ctld.getAATemplate(_crate.details.unit)
 
@@ -3520,6 +3518,7 @@ function ctld.unpackCrates(_arguments)
 
                     trigger.action.outTextForCoalition(_heli:getCoalition(), ctld.getPlayerNameOrType(_heli) .. " successfully deployed " .. _crate.details.desc .. " to the field", 10)
 
+--[[
                     if ctld.isJTACUnitType(_crate.details.unit) and ctld.JTAC_dropEnabled then
 
                         local _code = table.remove(ctld.jtacGeneratedLaserCodes, 1)
@@ -3528,6 +3527,7 @@ function ctld.unpackCrates(_arguments)
 
                         ctld.JTACAutoLase(_spawnedGroups:getName(), _code) --(_jtacGroupName, _laserCode, _smoke, _lock, _colour)
                     end
+--]]					
                 end
 
             else
@@ -5076,19 +5076,19 @@ function ctld.farEnoughFromLogisticZone(_heli)
     for _, _name in pairs(ctld.logisticUnits) do
 
         local _logistic = StaticObject.getByName(_name)
-
         if _logistic ~= nil and _logistic:getCoalition() == _heli:getCoalition() then
-
             --get distance
             local _dist = ctld.getDistance(_heliPoint, _logistic:getPoint())
             -- env.info("DIST ".._dist)
             if _dist <= ctld.minimumDeployDistance then
                 -- env.info("TOO CLOSE ".._dist)
                 _farEnough = false
+                ctld.displayMessageToGroup(_heli, "Not far enough from Logistics Center ".._dist.." meters, need to be greater than "..ctld.minimumDeployDistance.." meters", 10)
+--              env:info("DEBUG-1: Is LC Distance less than or equal to minimum deploy distance (1500m)?")
+--              log:info("DEBUG-1: Is LC Distance less than or equal to minimum deploy distance (1500m)?")
             end
         end
     end
-
     return _farEnough
 end
 
@@ -5261,6 +5261,7 @@ function ctld.crateValidLoadPoint(_heli, _crate)
 	return true -- Covers models we dont know about yet so they dont break
 end	
 
+--[[
 function ctld.isJTACUnitType(_type)
 
     _type = string.lower(_type)
@@ -5274,7 +5275,7 @@ function ctld.isJTACUnitType(_type)
 
     return false
 end
-
+--]]
 function ctld.updateZoneCounter(_index, _diff)
 
     if ctld.pickupZones[_index] ~= nil then
@@ -5462,7 +5463,7 @@ function ctld.addF10MenuOptions()
 
                                     local _cratePath = missionCommands.addSubMenuForGroup(_groupId, _subMenuName, _rootPath)
                                     for _, _crate in pairs(_crates) do
-
+										--[[			
                                         if ctld.isJTACUnitType(_crate.unit) == false
                                                 or (ctld.isJTACUnitType(_crate.unit) == true and ctld.JTAC_dropEnabled) then
                                             if _crate.side == nil or (_crate.side == _unit:getCoalition()) then
@@ -5479,6 +5480,7 @@ function ctld.addF10MenuOptions()
 												
                                             end
                                         end
+										--]]
                                     end
                                 end
                             end
@@ -5554,13 +5556,13 @@ function ctld.addF10MenuOptions()
         end
 
 
-        if ctld.JTAC_jtacStatusF10 then
-            -- get all BLUE players
-            ctld.addJTACRadioCommand(2)
-
-            -- get all RED players
-            ctld.addJTACRadioCommand(1)
-        end
+--        if ctld.JTAC_jtacStatusF10 then
+--            -- get all BLUE players
+--            ctld.addJTACRadioCommand(2)
+--
+--            -- get all RED players
+--            ctld.addJTACRadioCommand(1)
+--        end
 
     end)
 
@@ -5593,40 +5595,40 @@ function ctld.addRadioListCommand(_side)
     end
 end
 
-function ctld.addJTACRadioCommand(_side)
-
-    local _players = coalition.getPlayers(_side)
-
-    if _players ~= nil then
-
-        for _, _playerUnit in pairs(_players) do
-
-            local _groupId = ctld.getGroupId(_playerUnit)
-
-            if _groupId then
-                --   env.info("adding command for "..index)
-                if ctld.jtacRadioAdded[tostring(_groupId)] == nil then
-                    -- env.info("about command for "..index)
-                    missionCommands.addCommandForGroup(_groupId, "JTAC Status", nil, ctld.getJTACStatus, { _playerUnit:getName() })
-                    ctld.jtacRadioAdded[tostring(_groupId)] = true
-                    -- env.info("Added command for " .. index)
-                end
-            end
---[[
-            if _groupId and not ctld.JTAL then
-				-- Ironwulf2000 modified for AutoLase script 
-                --   env.info("adding command for "..index)
-                if ctld.jtacRadioAdded[tostring(_groupId)] == nil then
-                    -- env.info("about command for "..index)
-                    missionCommands.addCommandForGroup(_groupId, "JTAC Status", nil, ctld.getJTACStatus, { _playerUnit:getName() })
-                    ctld.jtacRadioAdded[tostring(_groupId)] = true
-                    -- env.info("Added command for " .. index)
-                end
-            end
---]]
-        end
-    end
-end
+--function ctld.addJTACRadioCommand(_side)
+--
+--    local _players = coalition.getPlayers(_side)
+--
+--    if _players ~= nil then
+--
+--        for _, _playerUnit in pairs(_players) do
+--
+--            local _groupId = ctld.getGroupId(_playerUnit)
+--
+--            if _groupId then
+--                --   env.info("adding command for "..index)
+--                if ctld.jtacRadioAdded[tostring(_groupId)] == nil then
+--                    -- env.info("about command for "..index)
+----                    missionCommands.addCommandForGroup(_groupId, "JTAC Status", nil, ctld.getJTACStatus, { _playerUnit:getName() })
+----                    ctld.jtacRadioAdded[tostring(_groupId)] = true
+--                    -- env.info("Added command for " .. index)
+--                end
+--            end
+----[[
+--            if _groupId and not ctld.JTAL then
+--				-- Ironwulf2000 modified for AutoLase script 
+--                --   env.info("adding command for "..index)
+--                if ctld.jtacRadioAdded[tostring(_groupId)] == nil then
+--                    -- env.info("about command for "..index)
+--                    missionCommands.addCommandForGroup(_groupId, "JTAC Status", nil, ctld.getJTACStatus, { _playerUnit:getName() })
+--                    ctld.jtacRadioAdded[tostring(_groupId)] = true
+--                    -- env.info("Added command for " .. index)
+--                end
+--            end
+----]]
+--        end
+--    end
+--end
 
 function ctld.getGroupId(_unit)
 
@@ -5655,7 +5657,7 @@ end
 
 ------------ JTAC -----------
 
-
+--[[
 ctld.jtacLaserPoints = {}
 ctld.jtacIRPoints = {}
 ctld.jtacSmokeMarks = {}
@@ -5668,7 +5670,7 @@ ctld.jtacLaserPointCodes = {}
 
 
 function ctld.JTACAutoLase(_jtacGroupName, _laserCode, _smoke, _lock, _colour)
-
+--]]
 --[[
 if ctld.JTAL then 
 		-- use the JTAL module instead - handy for servers already using AutoLase script in other areas, to keep things unified.
@@ -5676,6 +5678,7 @@ if ctld.JTAL then
 		return
 end
 --]]
+--[[
     if ctld.jtacStop[_jtacGroupName] == true then
         ctld.jtacStop[_jtacGroupName] = nil -- allow it to be started again
         ctld.cleanupJTAC(_jtacGroupName)
@@ -5787,12 +5790,12 @@ end
             ctld.notifyCoalition(_jtacGroupName .. " target " .. _tempUnitInfo.unitType .. " KIA. Good Job! Scanning for Targets. ", 10, _jtacUnit:getCoalition())
         end
 
---[[
+
 			if ctld.JTAC_BDA then
 				ctld.notifyCoalition(_jtacGroupName .. " target " .. _tempUnitInfo.unitType .. " KIA. Good Job! Scanning for Targets. ", 10, _jtacUnit:getCoalition())
 			end
 		end
---]]		
+		
         --remove from smoke list
         ctld.jtacSmokeMarks[_tempUnitInfo.name] = nil
 
@@ -5812,12 +5815,12 @@ end
             -- store current target for easy lookup
             ctld.jtacCurrentTargets[_jtacGroupName] = { name = _enemyUnit:getName(), unitType = _enemyUnit:getTypeName(), unitId = _enemyUnit:getID() }
 --            ctld.jtacCurrentTargets[_jtacGroupName] = { name = _enemyUnit:getName(), unitType = _enemyUnit:getTypeName(), unitId = _enemyUnit:getID(), smoke = _colour }
---[[
+
 --            ctld.notifyCoalition(_jtacGroupName .. " lasing new target " .. _enemyUnit:getTypeName() .. '. CODE: ' .. _laserCode .. ctld.getPositionString(_enemyUnit), 10, _jtacUnit:getCoalition())
 			if ctld.JTAC_targetNotifications then
 				ctld.notifyCoalition(_jtacGroupName .. " lasing new target " .. _enemyUnit:getTypeName() .. '. CODE: ' .. _laserCode .. ctld.getPositionString(_enemyUnit), 10, _jtacUnit:getCoalition())
 			end 
---]]
+
  -- create smoke
             if _smoke == true then
 
@@ -5877,7 +5880,7 @@ function ctld.cleanupJTAC(_jtacGroupName)
 
     ctld.jtacCurrentTargets[_jtacGroupName] = nil
 end
-
+--]]
 
 function ctld.notifyCoalition(_message, _displayFor, _side)
 
@@ -5896,6 +5899,7 @@ function ctld.createSmokeMarker(_enemyUnit, _colour)
     trigger.action.smoke({ x = _enemyPoint.x, y = _enemyPoint.y + 2.0, z = _enemyPoint.z }, _colour)
 end
 
+--[[
 function ctld.cancelLase(_jtacGroupName)
 
     --local index = "JTAC_"..jtacUnit:getID()
@@ -5922,7 +5926,8 @@ function ctld.cancelLase(_jtacGroupName)
         _tempIR = nil
     end
 end
-
+--]]
+--[[
 function ctld.laseUnit(_enemyUnit, _jtacUnit, _jtacGroupName, _laserCode)
 
     --cancelLase(jtacGroupName)
@@ -6116,8 +6121,9 @@ function ctld.findNearestVisibleEnemy(_jtacUnit, _targetType,_distance)
     return nil
 
 end
+--]]
 
-
+--[[
 function ctld.listNearbyEnemies(_jtacUnit)
 
     local _maxDistance =  ctld.JTAC_maxDistance
@@ -6184,7 +6190,7 @@ end
 
 
 -- Returns only alive units from group but the group / unit may not be active
-
+--]]
 function ctld.getGroup(groupName)
 
     local _groupUnits = Group.getByName(groupName)
@@ -6219,6 +6225,7 @@ function ctld.getAliveGroup(_groupName)
     return nil
 end
 
+--[[
 -- gets the JTAC status and displays to coalition units
 function ctld.getJTACStatus(_args)
 
@@ -6279,7 +6286,7 @@ function ctld.getJTACStatus(_args)
 
     ctld.notifyCoalition(_message, 10, _side)
 end
-
+--]]
 
 
 function ctld.isInfantry(_unit)
@@ -6318,6 +6325,7 @@ end
 -- -- and the last three digits must be between 1 and 8.
 --  The range used to be bugged so its not 1 - 8 but 0 - 7.
 -- function below will use the range 1-7 just incase
+--[[
 function ctld.generateLaserCode()
 
     ctld.jtacGeneratedLaserCodes = {}
@@ -6370,6 +6378,7 @@ end
 -- 200 - 400 in 10KHz
 -- 400 - 850 in 10 KHz
 -- 850 - 1250 in 50 KHz
+--]]
 function ctld.generateVHFrequencies()
 
     --ignore list
@@ -6799,11 +6808,11 @@ end,nil, timer.getTime()+1 )
 --world.addEventHandler(ctld.eventHandler)
 
 --env.info("CTLD event handler added")
-
+--[[
 env.info("Generating Laser Codes")
 ctld.generateLaserCode()
 env.info("Generated Laser Codes")
-
+--]]
 
 
 env.info("Generating UHF Frequencies")
